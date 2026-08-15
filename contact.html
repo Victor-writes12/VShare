@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | VSHARE T&amp;T</title>
+<meta name="description" content="Get in touch with VSHARE T&amp;T for a freight quote, warehousing inquiry or general support. Call, email or send a request through our contact form.">
+<link rel="icon" type="image/png" href="assets/logos/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="is-loading">
+
+<div class="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <img src="assets/logos/logo.png" alt="" class="preloader__logo">
+    <div class="preloader__track"><div class="preloader__bar"></div></div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container nav-row">
+    <a href="index.html" class="brand">
+      <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo">
+      <span class="brand-name">VSHARE<span>Transport &amp; Trucking</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="tracking.html">Tracking</a>
+      <a href="contact.html" class="is-active">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="contact.html" class="btn btn-outline btn-sm">Get A Quote</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" style="min-height:50vh;">
+    <div class="hero__media"><img src="assets/images/container-yard.jpg" alt="Stacked freight containers at a shipping yard during sunset"></div>
+    <div class="hero__overlay"></div>
+    <div class="container page-hero__content">
+      <div class="breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Contact</span></div>
+      <p class="eyebrow on-dark"><i class="fa-solid fa-envelope"></i> Get In Touch</p>
+      <h1 style="color:#fff;">Request A Quote Or Ask A Question</h1>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="section">
+    <div class="container contact-grid">
+      <form class="contact-form reveal" data-demo-form>
+        <p class="eyebrow">Request A Quote</p>
+        <h2 style="margin-top:14px; margin-bottom:30px;">Tell Us About Your Shipment</h2>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="Phone number">
+          </div>
+          <div class="form-field">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Company name">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="service">Service Required</label>
+          <select id="service" name="service">
+            <option value="">Select a service</option>
+            <option value="freight">Freight Transportation</option>
+            <option value="haulage">Trucking &amp; Haulage</option>
+            <option value="finalmile">Final Mile Delivery</option>
+            <option value="warehousing">Warehousing</option>
+            <option value="supplychain">Supply Chain Management</option>
+            <option value="express">Express Delivery</option>
+            <option value="international">International Logistics</option>
+            <option value="fleet">Fleet Management</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your shipment, pickup location, destination and timeline"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+          <i class="fa-solid fa-paper-plane"></i> Request A Quote
+        </button>
+        <p data-form-note style="font-size:.85rem; margin-top:16px; color:var(--blue-600); display:none;"></p>
+      </form>
+
+      <div class="contact-info reveal reveal-delay-1">
+        <div class="contact-info__item">
+          <i class="fa-solid fa-phone"></i>
+          <div>
+            <strong>Call Us</strong>
+            <p>+234 8082643626<br>Monday to Saturday, 8am to 6pm</p>
+          </div>
+        </div>
+        <div class="contact-info__item">
+          <i class="fa-solid fa-envelope"></i>
+          <div>
+            <strong>Email Us</strong>
+            <p>bookings@vsharett.com<br>We reply within one business day</p>
+          </div>
+        </div>
+        <div class="contact-info__item">
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <strong>Office Address</strong>
+            <p>VSHARE T&amp;T Logistics Park<br>Lagos, Nigeria</p>
+          </div>
+        </div>
+        <div class="contact-info__item">
+          <i class="fa-solid fa-clock"></i>
+          <div>
+            <strong>Business Hours</strong>
+            <p>Dispatch support available every day<br>Office hours, Monday to Saturday</p>
+          </div>
+        </div>
+        <div class="contact-map">
+          <iframe
+            src="https://www.google.com/maps?q=Lagos%20Nigeria&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map showing VSHARE T&amp;T office location in Lagos, Nigeria">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT CTA -->
+  <section class="section section--tight section--fog">
+    <div class="container" style="text-align:center;">
+      <div class="section-head center reveal">
+        <p class="eyebrow" style="justify-content:center;">Prefer To Talk First</p>
+        <h2>Our Support Team Is Ready</h2>
+        <p style="margin-top:18px;">Call our dispatch line for urgent shipments or same day pickup requests.</p>
+      </div>
+      <a href="tel:+2348082643626" class="btn btn-dark reveal"><i class="fa-solid fa-phone"></i> +234 82643626</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo">
+          <span class="brand-name">VSHARE<span>Transport &amp; Trucking</span></span>
+        </a>
+        <p>Freight, trucking, warehousing and final mile delivery for businesses that need to move with confidence.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="fleet.html">Our Fleet</a></li>
+          <li><a href="tracking.html">Track Shipment</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Freight Transportation</a></li>
+          <li><a href="services.html">Warehousing</a></li>
+          <li><a href="services.html">Express Delivery</a></li>
+          <li><a href="services.html">International Logistics</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Stay Updated</h4>
+        <p style="font-size:.88rem; margin-bottom:6px;">Subscribe for route updates and service news.</p>
+        <form data-demo-form>
+          <input type="email" placeholder="Email address" required aria-label="Email address">
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+        <p data-form-note style="font-size:.78rem; margin-top:10px; color:var(--lime-400); display:none;"></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> VSHARE T&amp;T. All Rights Reserved.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms Of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+</body>
+</html>
