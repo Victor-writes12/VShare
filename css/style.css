@@ -996,6 +996,7 @@ section{position:relative;}
 }
 .breadcrumb i{font-size:.6rem;}
 .breadcrumb a:hover{color:var(--white);}
+<<<<<<< HEAD
 
 /* ==========================================================================
    Legal pages (Privacy Policy, Terms Of Service)
@@ -1088,3 +1089,5 @@ section{position:relative;}
   color:var(--ink-700);
 }
 .legal-contact-list i{width:20px; color:var(--blue-600);}
+=======
+>>>>>>> 3d13eff8ee6c131eb95e7ca24e0596b5f75fc27a
