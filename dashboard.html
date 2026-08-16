@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-NG">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Shipments | VSHARE T&amp;T</title>
+<meta name="description" content="View your VSHARE T&amp;T shipments and their live status from your account dashboard.">
+<link rel="icon" type="image/png" href="assets/logos/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+  .dash-hero{padding-top:150px; padding-bottom:0;}
+  .dash-user{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-top:26px;
+  }
+  .dash-user__email{color:rgba(255,255,255,.6); font-size:.92rem;}
+  .claim-panel{
+    background:var(--white);
+    border:1px solid var(--fog-300);
+    border-radius:var(--radius-lg);
+    padding:32px 36px;
+    margin-top:-70px;
+    position:relative;
+    z-index:2;
+    box-shadow:var(--shadow-md);
+  }
+  .claim-row{display:flex; gap:12px; flex-wrap:wrap;}
+  .claim-row input{
+    flex:1;
+    min-width:220px;
+    padding:13px 16px;
+    border:1px solid var(--fog-300);
+    border-radius:var(--radius-sm);
+    font-size:.94rem;
+    background:var(--fog-100);
+  }
+  .claim-row input:focus{outline:none; border-color:var(--blue-500); background:var(--white);}
+  .claim-note{margin-top:12px; font-size:.86rem; display:none;}
+  .claim-note.is-error{color:#991b1b;}
+  .claim-note.is-success{color:#166534;}
+
+  .shipment-list{display:flex; flex-direction:column; gap:20px;}
+  .shipment-card{
+    background:var(--white);
+    border:1px solid var(--fog-300);
+    border-radius:var(--radius-md);
+    padding:28px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  .shipment-card__id{font-family:var(--font-display); font-size:1.05rem;}
+  .shipment-card__route{font-size:.86rem; color:var(--ink-500); margin-top:4px;}
+  .shipment-status-pill{
+    font-family:var(--font-label);
+    font-size:.72rem;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    padding:8px 16px;
+    border-radius:var(--radius-pill);
+    background:var(--fog-100);
+    color:var(--ink-700);
+    font-weight:700;
+  }
+  .shipment-status-pill.is-delivered{background:#f0fdf4; color:#166534;}
+  .shipment-status-pill.is-cancelled{background:#fef2f2; color:#991b1b;}
+  .empty-state{
+    text-align:center;
+    padding:60px 20px;
+    color:var(--ink-300);
+  }
+  .empty-state i{font-size:2rem; margin-bottom:16px; display:block;}
+</style>
+</head>
+<body class="is-loading">
+
+<div class="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <img src="assets/logos/logo.png" alt="" class="preloader__logo">
+    <div class="preloader__track"><div class="preloader__bar"></div></div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container nav-row">
+    <a href="index.html" class="brand">
+      <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo">
+      <span class="brand-name">VSHARE<span>Transport &amp; Trucking</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="tracking.html">Tracking</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboard.html" class="is-active">My Shipments</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" data-sign-out class="btn btn-outline btn-sm">Sign Out</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section--dark dash-hero">
+    <div class="container">
+      <p class="eyebrow on-dark"><i class="fa-solid fa-user"></i> Your Account</p>
+      <div class="dash-user">
+       <h1 style="color:#fff; margin-top:16px;" data-user-heading>My Shipments</h1>
+        <span class="dash-user__email" data-user-email></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="claim-panel reveal">
+        <p class="eyebrow">Link A Shipment</p>
+        <h3 style="margin:14px 0 18px;">Have A Tracking Number? Add It Here</h3>
+        <form data-claim-form>
+          <div class="claim-row">
+            <input type="text" placeholder="Enter tracking number, e.g. VSH482913" required>
+            <button type="submit" class="btn btn-dark"><i class="fa-solid fa-link"></i> Link To My Account</button>
+          </div>
+          <p class="claim-note" data-claim-note></p>
+        </form>
+      </div>
+
+      <div style="margin-top:56px;">
+        <div class="section-head reveal" style="margin-bottom:36px;">
+          <p class="eyebrow">Your Shipments</p>
+          <h2 style="margin-top:16px;">Live Status</h2>
+        </div>
+
+        <div class="shipment-list" data-shipment-list></div>
+        <div class="empty-state" data-empty-state style="display:none;">
+          <i class="fa-solid fa-box-open"></i>
+          <p>No shipments linked to your account yet. Use the form above with a tracking number from your booking confirmation.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo">
+          <span class="brand-name">VSHARE<span>Transport &amp; Trucking</span></span>
+        </a>
+        <p>Freight, trucking, warehousing and final mile delivery for businesses that need to move with confidence.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="fleet.html">Our Fleet</a></li>
+          <li><a href="tracking.html">Track Shipment</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Freight Transportation</a></li>
+          <li><a href="services.html">Warehousing</a></li>
+          <li><a href="services.html">Express Delivery</a></li>
+          <li><a href="services.html">International Logistics</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> VSHARE T&amp;T. All Rights Reserved.</span>
+      <div>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms Of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/auth.js"></script>
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", async function () {
+    if (!window.vshareSupabase) return;
+
+    const { data: sessionData } = await window.vshareSupabase.auth.getSession();
+    if (!sessionData.session) {
+      window.location.href = "login.html";
+      return;
+    }
+
+    const userEmailEl = document.querySelector("[data-user-email]");
+    if (userEmailEl) userEmailEl.textContent = sessionData.session.user.email;
+
+    const userHeading = document.querySelector("[data-user-heading]");
+const fullName = sessionData.session.user.user_metadata && sessionData.session.user.user_metadata.full_name;
+if (userHeading && fullName) {
+  userHeading.textContent = "Welcome, " + fullName;
+}
+
+    const STATUS_LABELS = {
+      booked: "Booked",
+      picked_up: "Picked Up",
+      in_transit: "In Transit",
+      arrived_hub: "Arrived At Hub",
+      out_for_delivery: "Out For Delivery",
+      delivered: "Delivered",
+      cancelled: "Cancelled"
+    };
+
+    async function loadShipments() {
+      const { data, error } = await window.vshareSupabase
+        .from("shipments")
+        .select("tracking_number, current_status, pickup_address, destination_address, created_at")
+        .order("created_at", { ascending: false });
+
+      const list = document.querySelector("[data-shipment-list]");
+      const emptyState = document.querySelector("[data-empty-state]");
+      list.innerHTML = "";
+
+      if (error || !data || data.length === 0) {
+        emptyState.style.display = "block";
+        return;
+      }
+
+      emptyState.style.display = "none";
+
+      data.forEach(function (shipment) {
+        const card = document.createElement("div");
+        card.className = "shipment-card";
+
+        const statusClass =
+          shipment.current_status === "delivered" ? "is-delivered" :
+          shipment.current_status === "cancelled" ? "is-cancelled" : "";
+
+        card.innerHTML =
+          '<div>' +
+            '<div class="shipment-card__id">' + shipment.tracking_number + '</div>' +
+            '<div class="shipment-card__route">' +
+              (shipment.pickup_address || "Pickup TBC") + ' <i class="fa-solid fa-arrow-right" style="margin:0 6px;"></i> ' +
+              (shipment.destination_address || "Destination TBC") +
+            '</div>' +
+          '</div>' +
+          '<span class="shipment-status-pill ' + statusClass + '">' +
+            (STATUS_LABELS[shipment.current_status] || shipment.current_status) +
+          '</span>' +
+          '<a href="tracking.html?id=' + encodeURIComponent(shipment.tracking_number) + '" class="btn btn-dark btn-sm">View Timeline</a>';
+
+        list.appendChild(card);
+      });
+    }
+
+    loadShipments();
+
+    const claimForm = document.querySelector("[data-claim-form]");
+    const claimNote = document.querySelector("[data-claim-note]");
+    claimForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const input = claimForm.querySelector("input");
+      const trackingNumber = input.value.trim();
+      if (!trackingNumber) return;
+
+      const { data, error } = await window.vshareSupabase.rpc("claim_shipment", {
+        p_tracking_number: trackingNumber
+      });
+
+      claimNote.style.display = "block";
+
+      if (error || !data || !data[0]) {
+        claimNote.className = "claim-note is-error";
+        claimNote.textContent = "Something went wrong. Please try again.";
+        return;
+      }
+
+      const result = data[0];
+      if (result.success) {
+        claimNote.className = "claim-note is-success";
+        claimNote.textContent = result.message;
+        input.value = "";
+        loadShipments();
+      } else {
+        claimNote.className = "claim-note is-error";
+        claimNote.textContent = result.message;
+      }
+    });
+  });
+</script>
+
+<div class="cookie-banner" data-cookie-banner role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <div class="cookie-banner__text">
+    <div class="cookie-banner__icon"><i class="fa-solid fa-cookie-bite"></i></div>
+    <p>
+      <strong>We Use Cookies</strong>
+      We use cookies to run essential features of this site and to understand how it is used, as explained in our <a href="privacy-policy.html">Privacy Policy</a>.
+    </p>
+  </div>
+  <div class="cookie-banner__actions">
+    <button type="button" class="btn btn-primary" data-cookie-accept>Accept All</button>
+    <button type="button" class="btn btn-outline" style="color:var(--white); border-color:rgba(255,255,255,.3);" data-cookie-reject>Reject Non Essential</button>
+  </div>
+</div>
+
+<script src="js/cookie-consent.js"></script>
+</body>
+</html>

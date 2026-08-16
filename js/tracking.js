@@ -2,10 +2,6 @@
    VSHARE T&T — tracking.js
    Live shipment tracking, backed by Supabase.
    ============================================== */
-
-const SUPABASE_URL = "https://dhsjjkthaneycrtzbjqz.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRoc2pqa3RoYW5leWNydHpianF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4NzE0NDUsImV4cCI6MjEwMjQ0NzQ0NX0.k4egqT42ncIeJCM9ddIxJnZga0-WA4Ely4mDQ_lOUE0";
-
 const STATUS_LABELS = {
   booked: { label: "Booked", detail: "Shipment created and awaiting pickup" },
   picked_up: { label: "Picked Up", detail: "Collected from pickup location" },
@@ -33,10 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const summaryEta = document.querySelector("[data-tracking-eta]");
   const errorNote = document.querySelector("[data-tracking-error]");
 
-  let supabaseClient = null;
-  if (window.supabase && SUPABASE_URL.indexOf("YOUR_SUPABASE") === -1) {
-    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  }
+ let supabaseClient = window.vshareSupabase || null;
 
   function showError(message) {
     if (!errorNote) return;

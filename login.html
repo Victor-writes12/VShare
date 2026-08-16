@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-NG">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In | VSHARE T&amp;T</title>
+<meta name="description" content="Sign in or create a VSHARE T&amp;T account to view your shipments and track deliveries from one dashboard.">
+<link rel="icon" type="image/png" href="assets/logos/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+  .auth-shell{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:140px 24px 80px;
+    background:var(--fog-100);
+  }
+  .auth-card{
+    width:100%;
+    max-width:440px;
+    background:var(--white);
+    border:1px solid var(--fog-300);
+    border-radius:var(--radius-lg);
+    padding:44px;
+    box-shadow:var(--shadow-md);
+  }
+  .auth-card__logo{display:flex; justify-content:center; margin-bottom:24px;}
+  .auth-card__logo img{height:44px;}
+  .auth-tabs{
+    display:flex;
+    background:var(--fog-100);
+    border-radius:var(--radius-pill);
+    padding:4px;
+    margin-bottom:32px;
+  }
+  .auth-tab{
+    flex:1;
+    text-align:center;
+    padding:11px 0;
+    border-radius:var(--radius-pill);
+    font-family:var(--font-label);
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--ink-500);
+    cursor:pointer;
+    transition:background .3s ease, color .3s ease;
+  }
+  .auth-tab.is-active{background:var(--navy-950); color:var(--white);}
+  .auth-panel{display:none;}
+  .auth-panel.is-active{display:block;}
+  .auth-field{margin-bottom:18px;}
+  .auth-field label{
+    display:block;
+    font-family:var(--font-label);
+    font-size:.76rem;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--ink-500);
+    margin-bottom:8px;
+  }
+  .auth-field input{
+    width:100%;
+    padding:13px 16px;
+    border:1px solid var(--fog-300);
+    border-radius:var(--radius-sm);
+    font-size:.94rem;
+    background:var(--fog-100);
+    transition:border-color .3s ease, background .3s ease;
+  }
+  .auth-field input:focus{outline:none; border-color:var(--blue-500); background:var(--white);}
+  .auth-submit{width:100%; justify-content:center; margin-top:6px;}
+  .auth-divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:26px 0;
+    color:var(--ink-300);
+    font-size:.78rem;
+    font-family:var(--font-label);
+    text-transform:uppercase;
+    letter-spacing:.05em;
+  }
+  .auth-divider::before,
+  .auth-divider::after{content:""; flex:1; height:1px; background:var(--fog-300);}
+  .auth-google{
+    width:100%;
+    justify-content:center;
+    background:var(--white);
+    border:1px solid var(--fog-300);
+    color:var(--ink-900);
+  }
+  .auth-google:hover{background:var(--fog-100);}
+  .auth-note{
+    margin-top:20px;
+    font-size:.86rem;
+    text-align:center;
+    display:none;
+    padding:14px 16px;
+    border-radius:var(--radius-sm);
+  }
+  .auth-note.is-error{background:#fef2f2; color:#991b1b; display:block;}
+  .auth-note.is-success{background:#f0fdf4; color:#166534; display:block;}
+  .auth-forgot{
+    display:block;
+    text-align:right;
+    font-size:.82rem;
+    color:var(--blue-600);
+    margin:-8px 0 18px;
+  }
+  .auth-forgot:hover{text-decoration:underline;}
+</style>
+</head>
+<body class="is-loading">
+
+<div class="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <img src="assets/logos/logo.png" alt="" class="preloader__logo">
+    <div class="preloader__track"><div class="preloader__bar"></div></div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container nav-row">
+    <a href="index.html" class="brand">
+      <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo">
+      <span class="brand-name">VSHARE<span>Transport &amp; Trucking</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" data-auth-link class="btn btn-outline btn-sm">Sign In</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="auth-shell">
+    <div class="auth-card">
+      <div class="auth-card__logo">
+        <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo">
+      </div>
+
+      <div class="auth-tabs">
+        <div class="auth-tab is-active" data-auth-tab="signin">Sign In</div>
+        <div class="auth-tab" data-auth-tab="signup">Create Account</div>
+      </div>
+
+      <!-- SIGN IN -->
+      <div class="auth-panel is-active" data-auth-panel="signin">
+        <form data-signin-form>
+          <div class="auth-field">
+            <label for="signin-email">Email</label>
+            <input type="email" id="signin-email" required autocomplete="email">
+          </div>
+          <div class="auth-field">
+            <label for="signin-password">Password</label>
+            <input type="password" id="signin-password" required autocomplete="current-password">
+          </div>
+          <a href="#" class="auth-forgot" data-forgot-password>Forgot password</a>
+          <button type="submit" class="btn btn-primary auth-submit">
+            <i class="fa-solid fa-right-to-bracket"></i> Sign In
+          </button>
+        </form>
+      </div>
+
+      <!-- SIGN UP -->
+      <div class="auth-panel" data-auth-panel="signup">
+        <form data-signup-form>
+          <div class="auth-field">
+            <label for="signup-name">Full Name</label>
+            <input type="text" id="signup-name" required autocomplete="name">
+          </div>
+          <div class="auth-field">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" required autocomplete="email">
+          </div>
+          <div class="auth-field">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" required minlength="6" autocomplete="new-password">
+          </div>
+          <button type="submit" class="btn btn-primary auth-submit">
+            <i class="fa-solid fa-user-plus"></i> Create Account
+          </button>
+        </form>
+      </div>
+
+      <div class="auth-divider">Or</div>
+      <button type="button" class="btn auth-google" data-google-signin>
+        <i class="fa-brands fa-google"></i> Continue With Google
+      </button>
+
+      <p class="auth-note" data-auth-note></p>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/auth.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll("[data-auth-tab]");
+    const panels = document.querySelectorAll("[data-auth-panel]");
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        tabs.forEach(function (t) { t.classList.remove("is-active"); });
+        panels.forEach(function (p) { p.classList.remove("is-active"); });
+        tab.classList.add("is-active");
+        document.querySelector('[data-auth-panel="' + tab.dataset.authTab + '"]').classList.add("is-active");
+      });
+    });
+
+    const note = document.querySelector("[data-auth-note]");
+    function showNote(message, type) {
+      note.textContent = message;
+      note.className = "auth-note is-" + type;
+    }
+
+    const signinForm = document.querySelector("[data-signin-form]");
+    signinForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      if (!window.vshareSupabase) return;
+      const email = document.getElementById("signin-email").value.trim();
+      const password = document.getElementById("signin-password").value;
+      const { error } = await window.vshareSupabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        showNote(error.message, "error");
+      } else {
+        window.location.href = "dashboard.html";
+      }
+    });
+
+    const signupForm = document.querySelector("[data-signup-form]");
+    signupForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      if (!window.vshareSupabase) return;
+      const name = document.getElementById("signup-name").value.trim();
+      const email = document.getElementById("signup-email").value.trim();
+      const password = document.getElementById("signup-password").value;
+      const { error } = await window.vshareSupabase.auth.signUp({
+        email,
+        password,
+        options: { data: { full_name: name } }
+      });
+      if (error) {
+        showNote(error.message, "error");
+      } else {
+        showNote("Account created. You can now sign in.", "success");
+        signupForm.reset();
+      }
+    });
+
+    const googleBtn = document.querySelector("[data-google-signin]");
+    googleBtn.addEventListener("click", async function () {
+      if (!window.vshareSupabase) return;
+      await window.vshareSupabase.auth.signInWithOAuth({
+        provider: "google",
+        options: { redirectTo: window.location.origin + "/dashboard.html" }
+      });
+    });
+
+    const forgotLink = document.querySelector("[data-forgot-password]");
+    forgotLink.addEventListener("click", async function (e) {
+      e.preventDefault();
+      if (!window.vshareSupabase) return;
+      const email = document.getElementById("signin-email").value.trim();
+      if (!email) {
+        showNote("Enter your email above first, then click Forgot password.", "error");
+        return;
+      }
+      const { error } = await window.vshareSupabase.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + "/login.html"
+      });
+      if (error) {
+        showNote(error.message, "error");
+      } else {
+        showNote("Password reset email sent, check your inbox.", "success");
+      }
+    });
+  });
+</script>
+</body>
+</html>
