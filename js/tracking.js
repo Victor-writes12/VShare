@@ -1,7 +1,10 @@
-/* ==============================================
+/* ==========================================================================
    VSHARE T&T — tracking.js
    Live shipment tracking, backed by Supabase.
-   ============================================== */
+   Uses the shared Supabase client created in js/auth.js, so make sure
+   auth.js loads before this file.
+   ========================================================================== */
+
 const STATUS_LABELS = {
   booked: { label: "Booked", detail: "Shipment created and awaiting pickup" },
   picked_up: { label: "Picked Up", detail: "Collected from pickup location" },
@@ -27,9 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const stepsList = document.querySelector("[data-tracking-steps]");
   const summaryId = document.querySelector("[data-tracking-id]");
   const summaryEta = document.querySelector("[data-tracking-eta]");
+  const summaryReceiver = document.querySelector("[data-tracking-receiver]");
+  const summaryCargo = document.querySelector("[data-tracking-cargo]");
+  const summaryPickup = document.querySelector("[data-tracking-pickup]");
+  const summaryDestination = document.querySelector("[data-tracking-destination]");
   const errorNote = document.querySelector("[data-tracking-error]");
 
- let supabaseClient = window.vshareSupabase || null;
+  let supabaseClient = window.vshareSupabase || null;
 
   function showError(message) {
     if (!errorNote) return;
@@ -50,12 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderTimeline(rows) {
     stepsList.innerHTML = "";
 
-    const seenStatuses = rows
-      .filter(function (r) { return r.event_status; })
-      .map(function (r) { return r.event_status; });
-
     const currentStatus = rows[0].current_status;
     const currentIndex = STATUS_ORDER.indexOf(currentStatus);
+    const fragment = document.createDocumentFragment();
 
     STATUS_ORDER.forEach(function (statusKey, index) {
       const meta = STATUS_LABELS[statusKey] || { label: statusKey, detail: "" };
@@ -79,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       li.appendChild(strong);
       li.appendChild(span);
-      stepsList.appendChild(li);
+      fragment.appendChild(li);
     });
 
     if (currentStatus === "cancelled") {
@@ -91,14 +95,20 @@ document.addEventListener("DOMContentLoaded", function () {
       span.textContent = "This shipment was cancelled";
       li.appendChild(strong);
       li.appendChild(span);
-      stepsList.appendChild(li);
+      fragment.appendChild(li);
     }
+
+    stepsList.appendChild(fragment);
   }
 
   async function lookupShipment(trackingNumber) {
     if (!supabaseClient) {
+      supabaseClient = window.vshareSupabase || null;
+    }
+
+    if (!supabaseClient) {
       showError(
-        "Tracking is not fully connected yet. Add your Supabase project URL and key in js/tracking.js."
+        "Tracking is not connected yet. Check that js/auth.js is loaded before js/tracking.js."
       );
       return;
     }
@@ -128,6 +138,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const meta = STATUS_LABELS[data[0].current_status];
       summaryEta.textContent = meta ? meta.label : data[0].current_status;
     }
+    if (summaryReceiver) summaryReceiver.textContent = data[0].receiver_name || "Not provided";
+    if (summaryCargo) summaryCargo.textContent = data[0].cargo_description || "Not specified";
+    if (summaryPickup) summaryPickup.textContent = data[0].pickup_address || "Not specified";
+    if (summaryDestination) summaryDestination.textContent = data[0].destination_address || "Not specified";
 
     renderTimeline(data);
     if (resultPanel) resultPanel.classList.add("is-visible");

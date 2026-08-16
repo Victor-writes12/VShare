@@ -83,6 +83,19 @@
     color:var(--ink-300);
   }
   .empty-state i{font-size:2rem; margin-bottom:16px; display:block;}
+  .shipment-skeleton{
+    height:88px;
+    background:linear-gradient(90deg, var(--fog-100) 25%, var(--fog-200) 37%, var(--fog-100) 63%);
+    background-size:400% 100%;
+    animation:shipmentSkeletonShimmer 1.4s ease infinite;
+  }
+  @keyframes shipmentSkeletonShimmer{
+    0%{background-position:100% 50%;}
+    100%{background-position:0 50%;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .shipment-skeleton{animation:none;}
+  }
 </style>
 </head>
 <body class="is-loading">
@@ -97,14 +110,11 @@
 <header class="site-header">
   <div class="container nav-row">
     <a href="index.html" class="brand">
-      <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo">
+      <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo" width="42" height="42">
       <span class="brand-name">VSHARE<span>Transport &amp; Trucking</span></span>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="tracking.html">Tracking</a>
       <a href="contact.html">Contact</a>
       <a href="dashboard.html" class="is-active">My Shipments</a>
     </nav>
@@ -167,7 +177,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="brand">
-          <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo">
+          <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo" width="42" height="42">
           <span class="brand-name">VSHARE<span>Transport &amp; Trucking</span></span>
         </a>
         <p>Freight, trucking, warehousing and final mile delivery for businesses that need to move with confidence.</p>
@@ -194,17 +204,18 @@
     <div class="footer-bottom">
       <span>© <span data-year>2026</span> VSHARE T&amp;T. All Rights Reserved.</span>
       <div>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms-of-service.html">Terms Of Service</a>
+        <a href="Privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms Of Service</a>
       </div>
     </div>
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/auth.js"></script>
-<script src="js/main.js"></script>
-<script src="js/animations.js"></script>
+<link rel="preconnect" href="https://dhsjjkthaneycrtzbjqz.supabase.co">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="js/auth.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/animations.js" defer></script>
 <script>
   document.addEventListener("DOMContentLoaded", async function () {
     if (!window.vshareSupabase) return;
@@ -235,21 +246,40 @@ if (userHeading && fullName) {
     };
 
     async function loadShipments() {
+      const list = document.querySelector("[data-shipment-list]");
+      const emptyState = document.querySelector("[data-empty-state]");
+
+      // Skeleton loading state, shown immediately while Supabase responds
+      list.innerHTML =
+        '<div class="shipment-card shipment-skeleton"></div>' +
+        '<div class="shipment-card shipment-skeleton"></div>';
+      emptyState.style.display = "none";
+
       const { data, error } = await window.vshareSupabase
         .from("shipments")
         .select("tracking_number, current_status, pickup_address, destination_address, created_at")
         .order("created_at", { ascending: false });
 
-      const list = document.querySelector("[data-shipment-list]");
-      const emptyState = document.querySelector("[data-empty-state]");
       list.innerHTML = "";
 
-      if (error || !data || data.length === 0) {
+      if (error) {
+        console.error("Failed to load shipments:", error.message);
+        emptyState.style.display = "block";
+        emptyState.querySelector("p").textContent =
+          "Something went wrong loading your shipments. Please refresh the page or contact support if this continues.";
+        return;
+      }
+
+      if (!data || data.length === 0) {
         emptyState.style.display = "block";
         return;
       }
 
       emptyState.style.display = "none";
+
+      // Build every card off screen in a fragment, then attach once,
+      // so the browser only has to reflow the page a single time.
+      const fragment = document.createDocumentFragment();
 
       data.forEach(function (shipment) {
         const card = document.createElement("div");
@@ -272,8 +302,10 @@ if (userHeading && fullName) {
           '</span>' +
           '<a href="tracking.html?id=' + encodeURIComponent(shipment.tracking_number) + '" class="btn btn-dark btn-sm">View Timeline</a>';
 
-        list.appendChild(card);
+        fragment.appendChild(card);
       });
+
+      list.appendChild(fragment);
     }
 
     loadShipments();
@@ -317,7 +349,7 @@ if (userHeading && fullName) {
     <div class="cookie-banner__icon"><i class="fa-solid fa-cookie-bite"></i></div>
     <p>
       <strong>We Use Cookies</strong>
-      We use cookies to run essential features of this site and to understand how it is used, as explained in our <a href="privacy-policy.html">Privacy Policy</a>.
+      We use cookies to run essential features of this site and to understand how it is used, as explained in our <a href="Privacy.html">Privacy Policy</a>.
     </p>
   </div>
   <div class="cookie-banner__actions">
@@ -326,6 +358,6 @@ if (userHeading && fullName) {
   </div>
 </div>
 
-<script src="js/cookie-consent.js"></script>
+<script src="js/cookie-consent.js" defer></script>
 </body>
 </html>

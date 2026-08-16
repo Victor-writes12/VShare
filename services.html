@@ -27,19 +27,19 @@
 <header class="site-header">
   <div class="container nav-row">
     <a href="index.html" class="brand">
-      <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo">
+      <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo" width="42" height="42">
       <span class="brand-name">VSHARE<span>Transport &amp; Trucking</span></span>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
-      <a href="login.html">About</a>
+      <a href="about.html">About</a>
       <a href="services.html" class="is-active">Services</a>
       <a href="fleet.html">Fleet</a>
       <a href="tracking.html">Tracking</a>
       <a href="contact.html">Contact</a>
     </nav>
- <div class="nav-actions">
-      <a href="login.html" class="btn btn-outline btn-sm">Get IN Touch</a>
+    <div class="nav-actions">
+      <a href="login.html" data-auth-link class="btn btn-outline btn-sm">Sign In</a>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -177,7 +177,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="brand">
-          <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo">
+          <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo" width="42" height="42">
           <span class="brand-name">VSHARE<span>Transport &amp; Trucking</span></span>
         </a>
         <p>Freight, trucking, warehousing and final mile delivery for businesses that need to move with confidence.</p>
@@ -200,11 +200,10 @@
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="services.html">Inter-States Transportation</a></li>
+          <li><a href="services.html">Freight Transportation</a></li>
           <li><a href="services.html">Warehousing</a></li>
           <li><a href="services.html">Express Delivery</a></li>
           <li><a href="services.html">International Logistics</a></li>
-           <li><a href="services.html">Inter-states Logistics</a></li>
         </ul>
       </div>
       <div class="footer-col footer-newsletter">
@@ -220,17 +219,32 @@
     <div class="footer-bottom">
       <span>© <span data-year>2026</span> VSHARE T&amp;T. All Rights Reserved.</span>
       <div>
-        <a href="#">Privacy Policy</a>
+        <a href="Privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms Of Service</a>
       </div>
     </div>
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/auth.js"></script>
-<script src="js/main.js"></script>
-<script src="js/animations.js"></script>
-<script src="js/cookie-consent.js"></script>
+<div class="cookie-banner" data-cookie-banner role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <div class="cookie-banner__text">
+    <div class="cookie-banner__icon"><i class="fa-solid fa-cookie"></i></div>
+    <p>
+      <strong>We Use Cookies</strong>
+      We use cookies to run essential features of this site and to understand how it is used, as explained in our <a href="Privacy.html">Privacy Policy</a>.
+    </p>
+  </div>
+  <div class="cookie-banner__actions">
+    <button type="button" class="btn btn-primary" data-cookie-accept>Accept All</button>
+    <button type="button" class="btn btn-outline" style="color:var(--white); border-color:rgba(255,255,255,.3);" data-cookie-reject>Reject Non Essential</button>
+  </div>
+</div>
+
+<link rel="preconnect" href="https://dhsjjkthaneycrtzbjqz.supabase.co">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="js/auth.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/animations.js" defer></script>
+<script src="js/cookie-consent.js" defer></script>
 </body>
 </html>

@@ -45,6 +45,25 @@
     margin-bottom:6px;
   }
   .track-result-head strong{font-family:var(--font-display); font-size:1.2rem;}
+  .track-result-route{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:20px 0;
+    margin-bottom:8px;
+    border-bottom:1px solid var(--fog-300);
+  }
+  .track-result-route div{flex:1;}
+  .track-result-route span{
+    display:block;
+    font-family:var(--font-label);
+    font-size:.7rem;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--ink-300);
+    margin-bottom:4px;
+  }
+  .track-result-route strong{font-family:var(--font-display); font-size:.98rem;}
   .track-result-panel .route-visual__point strong,
   .track-result-panel .route-visual__point span{color:var(--ink-900);}
   .track-result-panel .route-visual__point span{color:var(--ink-500);}
@@ -69,7 +88,7 @@
 <header class="site-header">
   <div class="container nav-row">
     <a href="index.html" class="brand">
-      <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo">
+      <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo" width="42" height="42">
       <span class="brand-name">VSHARE<span>Transport &amp; Trucking</span></span>
     </a>
     <nav class="nav-links" id="navLinks">
@@ -81,7 +100,7 @@
       <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
-      <a href="contact.html" class="btn btn-outline btn-sm">Get In Touch</a>
+      <a href="login.html" data-auth-link class="btn btn-outline btn-sm">Sign In</a>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -136,9 +155,22 @@
             <span>Status</span>
             <strong data-tracking-eta>—</strong>
           </div>
-          <a href="contact.html" class="btn btn-dark btn-sm"><i class="fa-solid fa-headset"></i> Contact Support</a>
+          <div>
+            <span>Receiver</span>
+            <strong data-tracking-receiver>—</strong>
+          </div>
+          <div>
+            <span>Cargo</span>
+            <strong data-tracking-cargo>—</strong>
+          </div>
+        </div>
+        <div class="track-result-route">
+          <div><span>From</span><strong data-tracking-pickup>—</strong></div>
+          <i class="fa-solid fa-arrow-right" style="color:var(--ink-300);"></i>
+          <div><span>To</span><strong data-tracking-destination>—</strong></div>
         </div>
         <ol class="route-visual__line" data-tracking-steps style="padding-left:36px;"></ol>
+        <a href="contact.html" class="btn btn-dark btn-sm" style="margin-top:8px;"><i class="fa-solid fa-headset"></i> Contact Support</a>
       </div>
     </div>
   </section>
@@ -177,7 +209,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="brand">
-          <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo">
+          <img src="assets/logos/logo.png" alt="VSHARE T&amp;T logo" width="42" height="42">
           <span class="brand-name">VSHARE<span>Transport &amp; Trucking</span></span>
         </a>
         <p>Freight, trucking, warehousing and final mile delivery for businesses that need to move with confidence.</p>
@@ -226,24 +258,26 @@
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/auth.js"></script>
-<script src="js/main.js"></script>
-<script src="js/animations.js"></script>
-<script src="js/cookie-consent.js"></script>
-<script>
-  /* Support ?id= from the homepage teaser form */
-  (function(){
-    var params = new URLSearchParams(window.location.search);
-    var id = params.get("id");
-    if (id) {
-      var input = document.querySelector("[data-tracking-form] input");
-      if (input) {
-        input.value = id;
-        document.querySelector("[data-tracking-form]").dispatchEvent(new Event("submit", {cancelable:true}));
-      }
-    }
-  })();
-</script>
+<div class="cookie-banner" data-cookie-banner role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <div class="cookie-banner__text">
+    <div class="cookie-banner__icon"><i class="fa-solid fa-cookie"></i></div>
+    <p>
+      <strong>We Use Cookies</strong>
+      We use cookies to run essential features of this site and to understand how it is used, as explained in our <a href="Privacy.html">Privacy Policy</a>.
+    </p>
+  </div>
+  <div class="cookie-banner__actions">
+    <button type="button" class="btn btn-primary" data-cookie-accept>Accept All</button>
+    <button type="button" class="btn btn-outline" style="color:var(--white); border-color:rgba(255,255,255,.3);" data-cookie-reject>Reject Non Essential</button>
+  </div>
+</div>
+
+<link rel="preconnect" href="https://dhsjjkthaneycrtzbjqz.supabase.co">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="js/auth.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/animations.js" defer></script>
+<script src="js/tracking.js" defer></script>
+<script src="js/cookie-consent.js" defer></script>
 </body>
 </html>
