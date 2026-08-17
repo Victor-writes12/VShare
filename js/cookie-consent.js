@@ -1,7 +1,5 @@
 /* ==========================================================================
    VSHARE T&T — cookie-consent.js
-   Simple cookie consent banner. Stores the visitor's choice in localStorage
-   so the banner does not reappear once a decision has been made.
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
