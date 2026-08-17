@@ -37,7 +37,11 @@
   }
   .nav-links.is-open{transform:translateX(0);}
   .nav-toggle{display:flex;}
-  .nav-actions .btn-outline{display:none;}
+  .nav-actions .btn-outline{
+  display:inline-flex;
+  padding:8px 16px;
+  font-size:.72rem;
+}
   .nav-links .btn{margin-top:12px;}
 
   .hero__content{padding-top:100px;}
