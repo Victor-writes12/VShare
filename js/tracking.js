@@ -145,6 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     renderTimeline(data);
     if (resultPanel) resultPanel.classList.add("is-visible");
+    window.vshareSendTrackingNotification(data[0]);
   }
 
   form.addEventListener("submit", function (e) {
