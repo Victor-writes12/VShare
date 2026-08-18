@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-NG">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us | VSHARE T&amp;T</title>
-<meta name="description" content="Get in touch with VSHARE T&amp;T for a freight quote, warehousing inquiry or general support. Call, email or send a request through our contact form.">
+<title>Blog | VSHARE T&amp;T</title>
+<meta name="description" content="News, updates and insights from VSHARE T&amp;T on logistics, trucking and freight across Nigeria.">
 <link rel="icon" type="image/png" href="assets/logos/logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,9 @@
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
       <a href="fleet.html">Fleet</a>
-      <a href="contact.html" class="is-active">Contact</a>
+      <a href="tracking.html">Tracking</a>
+      <a href="blog.html" class="is-active">Blog</a>
+      <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
       <a href="login.html" data-auth-link class="btn btn-outline btn-sm">Sign In</a>
@@ -49,121 +51,24 @@
 <main>
 
   <!-- PAGE HERO -->
-  <section class="page-hero" style="min-height:50vh;">
-    <div class="hero__media"><img src="assets/images/container-yard.jpg" alt="Stacked freight containers at a shipping yard during sunset"></div>
+  <section class="page-hero" style="min-height:42vh;">
+    <div class="hero__media"><img src="assets/images/port-cranes.jpg" alt="Port cranes and stacked containers at a busy shipping terminal"></div>
     <div class="hero__overlay"></div>
     <div class="container page-hero__content">
-      <div class="breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Contact</span></div>
-      <p class="eyebrow on-dark"><i class="fa-solid fa-envelope"></i> Get In Touch</p>
-      <h1 style="color:#fff;">Send your inquiries to Us</h1>
+      <div class="breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Blog</span></div>
+      <p class="eyebrow on-dark"><i class="fa-solid fa-newspaper"></i> News &amp; Insights</p>
+      <h1 style="color:#fff;">The VSHARE T&amp;T Blog</h1>
     </div>
   </section>
 
-  <!-- CONTACT FORM -->
+  <!-- BLOG GRID -->
   <section class="section">
-    <div class="container contact-grid">
-      <form class="contact-form reveal" data-quote-form>
-        <p class="eyebrow">Request A Quote</p>
-        <h2 style="margin-top:14px; margin-bottom:30px;">Tell Us About Your Shipment</h2>
-
-        <div class="form-row">
-          <div class="form-field">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
-          </div>
-          <div class="form-field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@company.com" required>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-field">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="Phone number">
-          </div>
-          <div class="form-field">
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" placeholder="Company name">
-          </div>
-        </div>
-
-        <div class="form-field">
-          <label for="service">Service Required</label>
-          <select id="service" name="service">
-            <option value="">Select a service</option>
-            <option value="freight">Freight Transportation</option>
-            <option value="haulage">Trucking &amp; Haulage</option>
-            <option value="finalmile">Final Mile Delivery</option>
-            <option value="warehousing">Warehousing</option>
-            <option value="supplychain">Supply Chain Management</option>
-            <option value="express">Express Delivery</option>
-            <option value="international">International Logistics</option>
-            <option value="fleet">Fleet Management</option>
-          </select>
-        </div>
-
-        <div class="form-field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Tell us about your shipment, pickup location, destination and timeline"></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
-          <i class="fa-solid fa-paper-plane"></i> Send
-        </button>
-        <p data-form-note style="font-size:.85rem; margin-top:16px; color:var(--blue-600); display:none;"></p>
-      </form>
-
-      <div class="contact-info reveal reveal-delay-1">
-        <div class="contact-info__item">
-          <i class="fa-solid fa-phone"></i>
-          <div>
-            <strong>Call Us</strong>
-            <p>+234 8082643626<br>Monday to Saturday, 8am to 6pm</p>
-          </div>
-        </div>
-        <div class="contact-info__item">
-          <i class="fa-solid fa-envelope"></i>
-          <div>
-            <strong>Email Us</strong>
-            <p>bookings@vsharett.com<br>We reply within one business day</p>
-          </div>
-        </div>
-        <div class="contact-info__item">
-          <i class="fa-solid fa-location-dot"></i>
-          <div>
-            <strong>Office Address</strong>
-            <p>VSHARE T&amp;T Logistics Park<br>Lagos, Nigeria</p>
-          </div>
-        </div>
-        <div class="contact-info__item">
-          <i class="fa-solid fa-clock"></i>
-          <div>
-            <strong>Business Hours</strong>
-            <p>Dispatch support available every day<br>Office hours, Monday to Saturday</p>
-          </div>
-        </div>
-        <div class="contact-map">
-          <iframe
-            src="https://www.google.com/maps?q=Lagos%20Nigeria&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Map showing VSHARE T&amp;T office location in Lagos, Nigeria">
-          </iframe>
-        </div>
+    <div class="container">
+      <div class="blog-grid" data-blog-list></div>
+      <div class="blog-empty" data-blog-empty style="display:none;">
+        <i class="fa-solid fa-newspaper"></i>
+        <p>No posts published yet. Check back soon.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- SUPPORT CTA -->
-  <section class="section section--tight section--fog">
-    <div class="container" style="text-align:center;">
-      <div class="section-head center reveal">
-        <p class="eyebrow" style="justify-content:center;">Prefer To Talk First</p>
-        <h2>Our Support Team Is Ready</h2>
-        <p style="margin-top:18px;">Call our dispatch line for urgent shipments or same day pickup requests.</p>
-      </div>
-      <a href="tel:+2348082643626" class="btn btn-dark reveal"><i class="fa-solid fa-phone"></i> +234 82643626</a>
     </div>
   </section>
 
@@ -240,10 +145,9 @@
 <link rel="preconnect" href="https://dhsjjkthaneycrtzbjqz.supabase.co">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 <script src="js/auth.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
-<script src="js/email.js" defer></script>
 <script src="js/main.js" defer></script>
 <script src="js/animations.js" defer></script>
+<script src="js/blog.js" defer></script>
 <script src="js/promo.js" defer></script>
 <script src="js/cookie-consent.js" defer></script>
 </body>
