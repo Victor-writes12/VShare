@@ -70,8 +70,9 @@
   .about-media img{height:320px;}
   .showcase{min-height:60vh;}
   .track-panel{padding:32px 20px;}
-  .track-input-row{flex-direction:column;}
-  .track-input-row button{width:100%; margin-top:8px;}
+  .track-input-row{gap:8px;}
+  .track-input-row input{padding:12px; font-size:.85rem;}
+  .track-input-row button{padding:12px 16px; font-size:.72rem;}
   .footer-bottom{flex-direction:column; align-items:flex-start;}
   .footer-bottom a{margin-left:0; margin-right:18px;}
   .service-card{padding:28px 22px;}
