@@ -54,7 +54,7 @@
   .section{padding:80px 0;}
   .section-head{margin-bottom:44px;}
 
-  .stat-grid{grid-template-columns:1fr;}
+  .stat-grid{grid-template-columns:2fr;}
   .form-row{grid-template-columns:1fr;}
 
   .cta-band{padding:64px 28px;}
