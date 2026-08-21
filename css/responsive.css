@@ -77,4 +77,7 @@
   .footer-bottom a{margin-left:0; margin-right:18px;}
   .service-card{padding:28px 22px;}
   .testimonial{padding:28px;}
+  .hero__content { padding-top: 160px; }
+  .hero__content p { padding-top: 0; }
 }
+
