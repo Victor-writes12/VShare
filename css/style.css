@@ -1315,3 +1315,17 @@ section{position:relative;}
   .blog-grid{grid-template-columns:1fr;}
   .promo-modal__body{padding:26px;}
 }
+
+.nav-links__close{
+  display:none;
+  position:absolute;
+  top:20px; right:20px;
+  width:36px; height:36px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.2);
+  background:transparent;
+  color:var(--white);
+  align-items:center;
+  justify-content:center;
+  font-size:1.1rem;
+}

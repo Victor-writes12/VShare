@@ -6,7 +6,7 @@
   .service-grid{grid-template-columns:repeat(2,1fr);}
   .fleet-grid{grid-template-columns:repeat(2,1fr);}
   .feature-grid{grid-template-columns:repeat(2,1fr);}
-  .process{grid-template-columns:repeat(2,1fr); row-gap:56px;}
+  .process{grid-template-columns:repeat(2,1fr); row-gap:48px;}
   .process::before{display:none;}
   .footer-grid{grid-template-columns:1fr 1fr;}
 }
@@ -21,6 +21,7 @@
 
 @media (max-width:860px){
   .nav-links{
+    .nav-links__close{display:flex;}
     position:fixed;
     top:0; right:0;
     height:100vh;

@@ -45,6 +45,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+    var closeBtn = document.querySelector("[data-nav-close]");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function () {
+      toggle.classList.remove("is-open");
+      links.classList.remove("is-open");
+    });
+  }
 
   /* ---- Stat counters ---- */
   var counters = document.querySelectorAll("[data-count]");
