@@ -23,8 +23,10 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (error || !data || data.length === 0) return;
 
   const promo = data[0];
-  const seenKey = "vsharePromoSeen_" + promo.id;
-  if (localStorage.getItem(seenKey)) return;
+  const countKey = "vsharePromoShownCount_" + promo.id;
+  const shownCount = parseInt(localStorage.getItem(countKey) || "0", 10);
+  if (shownCount >= 3) return;
+  localStorage.setItem(countKey, String(shownCount + 1));
 
   const overlay = document.createElement("div");
   overlay.className = "promo-overlay";
@@ -61,7 +63,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   document.body.appendChild(overlay);
 
   function dismiss() {
-    localStorage.setItem(seenKey, "1");
     overlay.classList.remove("is-visible");
     setTimeout(function () {
       overlay.remove();
