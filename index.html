@@ -60,13 +60,18 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero__media">
-      <video autoplay muted loop playsinline poster="assets/images/hero-poster.jpg">
-        <source src="assets/videos/hero-video.mp4" type="video/mp4">
-      </video>
-    </div>
+  <video 
+    autoplay 
+    muted 
+    loop 
+    playsinline 
+    poster="assets/images/hero-poster.jpg"
+    fetchpriority="high">
+    <source src="assets/videos/hero-video.mp4" type="video/mp4">
+  </video>
+</div>
     <div class="hero__overlay"></div>
     <div class="container hero__content">
-      <p class="eyebrow on-dark"></p></i> National Freight &amp; Trucking Network</p>
       <h1>Moving Your <em>Business</em> Forward</h1>
       <p>Reliable logistics and transportation solutions designed to move goods faster, safer and smarter, from first pickup to final delivery.</p>
       <div class="hero__cta">
@@ -91,7 +96,9 @@
   <section class="section" id="about">
     <div class="container about-grid">
       <div class="about-media reveal">
-        <img src="assets/images/warehouse-forklift.jpg" alt="Warehouse operator moving inventory with a forklift inside a VSHARE T&amp;T facility">
+        <img src="assets/images/warehouse-forklift.jpg" alt="Warehouse Forklift" 
+         loading="lazy" 
+         decoding="async">
         <div class="about-media__badge">
           <i class="fa-solid fa-clock"></i>
           <div>
@@ -124,7 +131,7 @@
       <div class="service-grid">
         <div class="service-card reveal">
           <div class="service-card__icon"><i class="fa-solid fa-truck-front"></i></div>
-          <h3>Freight Transportation</h3>
+          <h3>Regional Transportation</h3>
           <p>Full truckload and part load freight moved across regional and national routes.</p>
           <a href="services.html" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
@@ -199,7 +206,8 @@
       </div>
       <div class="fleet-grid">
         <div class="fleet-card reveal">
-          <div class="fleet-card__media"><img src="assets/images/truck-highway.jpg" alt="Heavy duty flatbed truck carrying palletised cargo on the highway"></div>
+          <div class="fleet-card__media"><img src="assets/images/truck-highway.jpg" alt="Heavy duty flatbed truck carrying palletised cargo on the highway"  loading="lazy" 
+            decoding="async"></div>
           <div class="fleet-card__body">
             <h3>Heavy Duty Trucks</h3>
             <p>Built for long distance freight and oversized loads.</p>
@@ -210,7 +218,8 @@
           </div>
         </div>
         <div class="fleet-card reveal reveal-delay-1">
-          <div class="fleet-card__media"><img src="assets/images/fleet-vans.jpg" alt="Fleet of white delivery vans parked in formation at a distribution yard"></div>
+          <div class="fleet-card__media"><img src="assets/images/fleet-vans.jpg" alt="Fleet of white delivery vans parked in formation at a distribution yard"  loading="lazy" 
+            decoding="async"></div>
           <div class="fleet-card__body">
             <h3>Delivery Vans</h3>
             <p>Nimble vehicles suited to urban and final mile routes.</p>
@@ -221,7 +230,8 @@
           </div>
         </div>
         <div class="fleet-card reveal reveal-delay-2">
-          <div class="fleet-card__media"><img src="assets/images/tanker-truck.jpg" alt="Tanker truck hauling a large cylindrical trailer on the motorway"></div>
+          <div class="fleet-card__media"><img src="assets/images/tanker-truck.jpg" alt="Tanker truck hauling a large cylindrical trailer on the motorway"  loading="lazy" 
+            decoding="async"></div>
           <div class="fleet-card__body">
             <h3>Specialised Tankers</h3>
             <p>Purpose built trailers for liquid and bulk material transport.</p>
@@ -338,7 +348,7 @@
         </div>
       </div>
       <div class="network-map reveal reveal-delay-1">
-        <img src="assets/images/port-cranes.jpg" alt="Port cranes and shipping containers under a bright blue sky">
+        <img src="assets/images/port-cranes.jpg" alt="Port cranes and shipping containers under a bright blue sky at a VSHARE T&amp;T logistics hub" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -371,7 +381,7 @@
           <div class="testimonial__stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <p class="quote">Their haulage team handled our heavy equipment move with care and kept us updated at every point.</p>
           <div class="testimonial__author">
-            <img src="assets/images/tanker-truck.jpg" alt="">
+            <img src="assets/images/tanker-truck.jpg" alt="Grace Ememe" loading="lazy" decoding="async">
             <div><strong>Grace Ememe</strong><span>Site Manager, Construction</span></div>
           </div>
         </div>
@@ -382,6 +392,50 @@
       </div>
     </div>
   </section>
+
+   <!-- INSTANT QUOTE -->
+<section class="section" id="instant-quote">
+  <div class="container">
+    <div class="track-panel reveal">
+      <div class="track-form">
+        <p class="eyebrow on-dark">Start Your Journey</p>
+        <h2>Know Your Delivery Cost Upfront</h2>
+        <p>Select a pickup and delivery area to see your price immediately, no calls, no waiting.</p>
+
+        <form data-quote-calc-form>
+          <div class="quote-select-row">
+       <select data-quote-pickup required>
+       <option value="">Pickup Area</option>
+       </select>
+       <select data-quote-delivery required>
+       <option value="">Delivery Area</option>
+       </select>
+       <select data-quote-size required>
+       <option value="">Package Size</option>
+       </select>
+       </div>
+          <button type="submit" class="btn btn-primary" style="margin-top:16px; width:100%; justify-content:center;">
+            Get Instant Estimate
+          </button>
+          <p class="track-error" data-quote-error style="display:none;"></p>
+        </form>
+      </div>
+
+      <div class="quote-result" data-quote-result>
+        <p class="eyebrow on-dark">Your Estimate</p>
+        <div class="quote-result__price" data-quote-total>—</div>
+        <div class="quote-result__route" data-quote-route>—</div>
+        <div class="quote-result__window">
+          <i class="fa-solid fa-clock"></i>
+          <span data-quote-window>—</span>
+        </div>
+        <a href="contact.html" class="btn btn-outline" style="margin-top:24px; width:100%; justify-content:center;">
+          Book This Delivery
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- CTA -->
   <section class="section" id="cta">
@@ -478,6 +532,7 @@
 <script src="js/email.js" defer></script>
 <script src="js/main.js" defer></script>
 <script src="js/animations.js" defer></script>
+<script src="js/quote.js" defer></script>
 <script src="js/cookie-consent.js" defer></script>
 </body>
 </html>

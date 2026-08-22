@@ -163,6 +163,50 @@
     </div>
   </section>
 
+   <!-- INSTANT QUOTE -->
+<section class="section" id="instant-quote">
+  <div class="container">
+    <div class="track-panel reveal">
+      <div class="track-form">
+        <p class="eyebrow on-dark">Start Your Journey</p>
+        <h2>Know Your Delivery Cost Upfront</h2>
+        <p>Select a pickup and delivery area to see your price immediately, no calls, no waiting.</p>
+
+        <form data-quote-calc-form>
+          <div class="quote-select-row">
+       <select data-quote-pickup required>
+       <option value="">Pickup Area</option>
+       </select>
+       <select data-quote-delivery required>
+       <option value="">Delivery Area</option>
+       </select>
+       <select data-quote-size required>
+       <option value="">Package Size</option>
+       </select>
+       </div>
+          <button type="submit" class="btn btn-primary" style="margin-top:16px; width:100%; justify-content:center;">
+            Get Instant Estimate
+          </button>
+          <p class="track-error" data-quote-error style="display:none;"></p>
+        </form>
+      </div>
+
+      <div class="quote-result" data-quote-result>
+        <p class="eyebrow on-dark">Your Estimate</p>
+        <div class="quote-result__price" data-quote-total>—</div>
+        <div class="quote-result__route" data-quote-route>—</div>
+        <div class="quote-result__window">
+          <i class="fa-solid fa-clock"></i>
+          <span data-quote-window>—</span>
+        </div>
+        <a href="contact.html" class="btn btn-outline" style="margin-top:24px; width:100%; justify-content:center;">
+          Book This Delivery
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
   <!-- CTA -->
   <section class="section">
     <div class="container">
@@ -257,6 +301,7 @@
 <script src="js/email.js" defer></script>
 <script src="js/main.js" defer></script>
 <script src="js/animations.js" defer></script>
+<script src="js/quote.js" defer></script>
 <script src="js/cookie-consent.js" defer></script>
 </body>
 </html>

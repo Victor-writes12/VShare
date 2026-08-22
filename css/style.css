@@ -1329,3 +1329,50 @@ section{position:relative;}
   justify-content:center;
   font-size:1.1rem;
 }
+
+/* ==========================================================================
+   Estimate 
+   ========================================================================== */
+.quote-select-row{display:flex; gap:12px; flex-wrap:wrap;}
+.quote-select-row select{
+  flex:1;
+  min-width:160px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:var(--radius-pill);
+  color:var(--white);
+  padding:14px 18px;
+  font-size:.9rem;
+  font-family:var(--font-body);
+}
+.quote-select-row select option{color:var(--ink-900);}
+
+.quote-result{
+  display:none;
+  position:relative;
+  z-index:1;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius-md);
+  padding:32px;
+}
+.quote-result.is-visible{display:block;}
+.quote-result__price{
+  font-family:var(--font-serif);
+  font-size:2.6rem;
+  font-weight:600;
+  color:var(--lime-500);
+  margin:14px 0 8px;
+}
+.quote-result__route{color:rgba(255,255,255,.75); font-size:.94rem; margin-bottom:14px;}
+.quote-result__window{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:rgba(255,255,255,.6);
+  font-size:.86rem;
+}
+
+@media (max-width:640px){
+  .quote-select-row{flex-direction:column;}
+}
